@@ -59,8 +59,20 @@ defmodule Book do
     [%Book{title: "ABC"}]
   """
   def search(books, query) do
+    Enum.filter(books, fn book.title -> book.title == query end)
+    |> IO.inspect()
   end
 end
+```
+
+```elixir
+book1 = %Book{title: "A"}
+book2 = %Book{title: "B"}
+book3 = %Book{title: "C"}
+
+Enum.filter(books, fn book.title -> book.title == query end) |> IO.inspect()
+
+Book.search([book1, book2, book3], "A")
 ```
 
 ## Mark As Completed
