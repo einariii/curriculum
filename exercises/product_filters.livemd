@@ -256,6 +256,12 @@ ExUnit.start(auto_run: false)
 defmodule ProductsTest do
   use ExUnit.Case
 
+  products = [
+    %{name: "Laptop", category: :computer, price: 1111},
+    %{name: "Synth", category: :instrument, price: 707},
+    %{name: "Speaker", category: :audio, price: 199}
+  ]
+
   test "filter/2 empty filters" do
     found = create_product(name: "Laptop")
     assert Products.filter([found], []) == [found]
