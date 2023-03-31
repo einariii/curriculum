@@ -133,7 +133,7 @@
   "math_with_protocols_exercise": true,
   "stack_server_exercise": false,
   "pokemon_battle_exercise": true,
-  "book_search_book_form_reading": false,
+  "book_search_book_form_reading": true,
   "agent_journal_exercise": false,
   "rubix_cube_exercise": false,
   "generic_server_reading": false,
