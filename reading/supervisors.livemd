@@ -276,27 +276,27 @@ To better understand how we can use a supervisor with different restart strategi
 Here, we've created a `Bomb` process that will send itself a message to cause it to crash after a specified `:bomb_time`.
 
 ```elixir
-defmodule Bomb do
-  use GenServer
+# defmodule Bomb do
+#   use GenServer
 
-  def start_link(opts) do
-    GenServer.start_link(__MODULE__, opts)
-  end
+#   def start_link(opts) do
+#     GenServer.start_link(__MODULE__, opts)
+#   end
 
-  @impl true
-  def init(opts) do
-    bomb_time = Keyword.get(opts, :bomb_time, 2000)
-    name = Keyword.get(opts, :name, 2000)
+#   @impl true
+#   def init(opts) do
+#     bomb_time = Keyword.get(opts, :bomb_time, 2000)
+#     name = Keyword.get(opts, :name, 2000)
 
-    Process.send_after(self(), :explode, bomb_time)
-    {:ok, name}
-  end
+#     Process.send_after(self(), :explode, bomb_time)
+#     {:ok, name}
+#   end
 
-  @impl true
-  def handle_info(:explode, name) do
-    raise "#{name} Exploded!"
-  end
-end
+#   @impl true
+#   def handle_info(:explode, name) do
+#     raise "#{name} Exploded!"
+#   end
+# end
 ```
 
 Each `Bomb` will exist for a specified time and then crash (explode).
@@ -419,7 +419,7 @@ So the timeline of crashes would be:
 * 9 seconds: `Bomb1` crashes (`Bomb2` restarted)
 
 ```elixir
-{:ok, supervisor_pid} = Supervisor.start_link(children, strategy: :rest_for_one, max_restarts: 5)
+# {:ok, supervisor_pid} = Supervisor.start_link(children, strategy: :rest_for_one, max_restarts: 5)
 ```
 
 ### Your Turn
@@ -486,7 +486,7 @@ children = [
 Uncomment the following code to see the crash timeline, then re-comment it.
 
 ```elixir
-Supervisor.start_link(children, strategy: :one_for_one)
+# Supervisor.start_link(children, strategy: :one_for_one)
 ```
 
 ## Further Reading
